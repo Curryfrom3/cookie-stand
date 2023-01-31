@@ -10,6 +10,7 @@ const seattleStore = {
   minCust: 23,
   avgCookiesPerCust: 6.3,
   cookiesPerHour: [],
+  //dailyTotal: 0,
 
 
   getRandomCustomersPerHour: function () {
@@ -38,6 +39,7 @@ const seattleStore = {
     for (let i =0; i < this.cookiesPerHour.length; i++){
       let li = document.createElement('li');
       li.textContent = `${this.cookiesPerHour[i]}`;
+      //this.dailyTotal += this.cookiesPerHour;
       cPH.appendChild(li);
     }
 
