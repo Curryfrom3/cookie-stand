@@ -10,7 +10,7 @@ const seattleStore = {
   minCust: 23,
   avgCookiesPerCust: 6.3,
   cookiesPerHour: [],
-  //dailyTotal: 0,
+  //gitdailyTotal: 0,
 
 
   getRandomCustomersPerHour: function () {
