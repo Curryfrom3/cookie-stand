@@ -24,6 +24,10 @@ let cities = document.getElementById('cities');
 
 let cityTableBody = document.querySelector('tbody');
 
+let cityTableHead = document.querySelector('thead');
+
+let cityTableFoot = document.querySelector('tfoot');
+
 // function used to get data
 
 function randomCustomer(min, max) {
@@ -39,7 +43,7 @@ function renderAll() {
 
 function tableHeader() {
   let row1 = document.createElement('tr');
-  cityTableBody.appendChild(row1);
+  cityTableHead.appendChild(row1);
   let cityHead = document.createElement('th');
   cityHead.innerText = 'City Name';
   row1.appendChild(cityHead);
@@ -58,7 +62,7 @@ function tableFooter() {
   let footer = document.createElement('tr');
   footer.innerText = 'Totals Per Hour';
   footer.id = 'tableFooter';
-  cityTableBody.appendChild(footer);
+  cityTableFoot.appendChild(footer);
   for (let i = 0; i < hourlyTotal.length; i++) {
     let thElem = document.createElement('th');
     thElem.innerText = hourlyTotal[i];
@@ -76,7 +80,7 @@ function tableFooter() {
 function totalPerHour(randomNumber, i) {
   hourlyTotal[i] += randomNumber;
 }
-// ******Object Literals******
+// Constructor Function
 
 function City(name, minCustomer, maxCustomer, averageCookie) {
 
@@ -87,7 +91,7 @@ function City(name, minCustomer, maxCustomer, averageCookie) {
   this.cookiesSold = [];
 }
 
-// object litterals
+// prototype method, we are adding methods to all instances of city.
 
 City.prototype.getCookiesSold = function () {
   let totalCookies = 0;
