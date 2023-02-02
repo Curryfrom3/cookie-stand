@@ -22,6 +22,8 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 let cities = document.getElementById('cities');
 
+let cookieForm = document.getElementById('cookie-form');
+
 let cityTableBody = document.querySelector('tbody');
 
 let cityTableHead = document.querySelector('thead');
@@ -123,19 +125,31 @@ City.prototype.render = function () {
 };
 
 function handleSubmit(event) {
+  // prevent default behavior of the event (typically a page refresh or navigation)
   event.preventDefault();
 
+  // extract values from the event target (form element) and assign them to local variables
   let cityName = event.target.cityName.value;
   let minCustomer = event.target.minCustomer.value;
   let maxCustomer = event.target.maxCustomer.value;
   let averageCookie = event.target.averageCookie.value;
 
+  // create a new instance of the City object using the extracted values and assign it to a local variable
   let newCity = new City(cityName, minCustomer, maxCustomer, averageCookie);
 
+  // add the newCity object to an array called allStores
   allStores.push(newCity);
+
+  // calculate the number of cookies sold in the city
   newCity.getCookiesSold();
+
+  // display the city's data in a table on the page
   newCity.render();
+
+  // remove an element with the id "tableFooter"
   document.getElementById('tableFooter').remove();
+
+  // add a new footer to the table
   tableFooter();
 }
 
@@ -146,4 +160,4 @@ hourlyTotal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 renderAll();
 tableFooter();
 // interface sets up a function that will be called whenever the specified event is delivered to the target.
-cities.addEventListener('submit', handleSubmit);
+cookieForm.addEventListener('submit', handleSubmit);
